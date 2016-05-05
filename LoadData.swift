@@ -84,6 +84,7 @@ class LoadData
                     tmp.address = subJson["location"]["address"].string
                     tmp.number = subJson["contact"]["formattedPhone"].string
                     tmp.distance = subJson["location"]["distance"].stringValue
+                    tmp.url = subJson["url"].string
                     PL.PList.append(tmp)
 //                    print(PlaceList[i].name)
 //                    i++
@@ -101,6 +102,11 @@ class LoadData
     }
     func PlaceLoadDB(station: String) -> Results<PlaceList>{
         let last_data = self.realm.objects(PlaceList).filter("nameM BEGINSWITH %@", station)
+        print(last_data)
+        return last_data
+    }
+    func PlaceLoadInfoDB(place: String) -> Results<Place>{
+        let last_data = self.realm.objects(Place).filter("name BEGINSWITH %@", place)
         print(last_data)
         return last_data
     }

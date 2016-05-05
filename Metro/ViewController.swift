@@ -22,9 +22,10 @@ class ViewController: UITableViewController {
         let onlineLW: StationList = StationList()
         let LoadSL: LoadData = LoadData()
 //        LoadSL.LoadLines()
-//        LoadSL.LoadFS()
+        LoadSL.LoadFS()
     }
-    
+    @IBAction func goBack (segue:UIStoryboardSegue){
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

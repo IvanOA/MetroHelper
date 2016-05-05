@@ -22,6 +22,7 @@ class PlaceTVC: UITableViewController{
             place_list.append(value.name)
             disList.append(value.distance)
         }
+        
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return place_list.count
@@ -37,5 +38,18 @@ class PlaceTVC: UITableViewController{
         cell.detailTextLabel?.text = "Расстояние " + disList[indexPath.row] + "м."
         return cell
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //определяем инд перехода
+        if segue.identifier == "PlaceInfo"{
+            // определяем номер нажатой строки
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                // создаем объект класса конечного пункта нашего перехода
+                let destvs: PlaceInfo = segue.destinationViewController as! PlaceInfo
+                // передаем необходимую информацию о городе
+                destvs.place = place_list[indexPath.row]
+            }
+        }
+    }
+
 
 }

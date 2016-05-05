@@ -14,6 +14,7 @@ class Place:Object{
     dynamic var address: String? = nil
     dynamic var number: String? = nil
     dynamic var distance: String = ""
+    dynamic var url: String? = nil
 }
 
 class PlaceList:Object{
