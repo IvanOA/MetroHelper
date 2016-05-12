@@ -17,14 +17,18 @@ class Settings: UIViewController {
         CurrentRange.text = String(Int(SliderOutlet.value))
     }
     var filePl: FilePlist = FilePlist()
+
     @IBAction func Save(sender: AnyObject) {
-        filePl.dist = String(Int(SliderOutlet.value))
+        filePl.dist = Int(SliderOutlet.value)
         performSegueWithIdentifier("goBack", sender: nil)
       
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if filePl.dist == nil {
+          filePl.dist = (2000-50)/2
+        }
         print(filePl.dist)
-        SliderOutlet.value = (filePl.dist as! Float)
+        SliderOutlet.value = (filePl.dist as? Float)!
     }
 }
