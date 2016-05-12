@@ -8,11 +8,19 @@
 
 import Foundation
 import RealmSwift
+import UIKit
+import MapKit
 
-class PlaceInfo: UITableViewController {
+class PlaceInfo: UIViewController {
     var places: [String] = []
     var place: String = ""
+    @IBOutlet weak var URL: UILabel!
+    @IBOutlet var Distance: UIView!
+    @IBOutlet weak var Phone: UILabel!
+    @IBOutlet weak var Address: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print(place)
         var placeDB: LoadData = LoadData()
@@ -23,19 +31,21 @@ class PlaceInfo: UITableViewController {
 //        var places4: String = ""
 //        var places5: String = ""
         for value in info{
+//            Distance.text = value.distance
+            
             places.append(value.name)
             places.append(value.distance)
             if value.address != nil {
-                places.append(value.address!)
+                Address.text = value.address!
             }
             else {
-                places.append("no Info")
+                Address.text = "no Info"
             }
             if value.number != nil {
-                places.append(value.number!)
+                Phone.text = value.number!
             }
             else {
-                places.append("no Info")
+                Phone.text = "no Info"
             }
             if value.number != nil {
                 places.append(value.url!)
@@ -51,18 +61,18 @@ class PlaceInfo: UITableViewController {
 //        print(places4)
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = places[indexPath.row]
-        return cell
-    }
-    
+//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 5
+//    }
+//    
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+//        cell.textLabel?.text = places[indexPath.row]
+//        return cell
+//    }
+//    
 }

@@ -21,6 +21,7 @@
 		F1DBF4111CC672CC00EE86B4 /* LineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBF4101CC672CC00EE86B4 /* LineList.swift */; };
 		F1DBF4131CCCEA1E00EE86B4 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBF4121CCCEA1E00EE86B4 /* Place.swift */; };
 		F1DBF4171CCE0EC600EE86B4 /* PlaceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBF4161CCE0EC600EE86B4 /* PlaceTVC.swift */; };
+		F1DBF4191CE493A400EE86B4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1DBF4181CE493A400EE86B4 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F1DBF4101CC672CC00EE86B4 /* LineList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineList.swift; sourceTree = "<group>"; };
 		F1DBF4121CCCEA1E00EE86B4 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		F1DBF4161CCE0EC600EE86B4 /* PlaceTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTVC.swift; sourceTree = "<group>"; };
+		F1DBF4181CE493A400EE86B4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1DBF4191CE493A400EE86B4 /* MapKit.framework in Frameworks */,
 				DD89CC67E9EADA453201DB4B /* Pods_Metro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +101,7 @@
 		636EF58EDCEBF1D7B8F61205 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1DBF4181CE493A400EE86B4 /* MapKit.framework */,
 				C98F1135F7B8886CE4243637 /* Pods_Metro.framework */,
 			);
 			name = Frameworks;
@@ -147,6 +151,11 @@
 				TargetAttributes = {
 					1F8DF77A1CBFD2CB00F6EC56 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

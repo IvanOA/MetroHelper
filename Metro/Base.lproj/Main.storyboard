@@ -132,7 +132,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="tOE-Ta-ASl" kind="show" identifier="PlaceInfo" id="5Uj-4P-g7G"/>
+                                    <segue destination="pZP-oS-lQw" kind="show" identifier="PlaceInfo" id="yj9-4U-YaP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -147,34 +147,59 @@
             <point key="canvasLocation" x="1206" y="110"/>
         </scene>
         <!--Place Info-->
-        <scene sceneID="cCD-MF-Tcz">
+        <scene sceneID="Oda-hR-dHD">
             <objects>
-                <tableViewController id="tOE-Ta-ASl" customClass="PlaceInfo" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tjw-r5-7Bs">
+                <viewController id="pZP-oS-lQw" customClass="PlaceInfo" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RjL-QS-JeI"/>
+                        <viewControllerLayoutGuide type="bottom" id="m4Z-xV-CYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fdb-VH-G37">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Телефон" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dza-pO-Xdk">
+                                <rect key="frame" x="11" y="266" width="289" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Расстояние" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F94-rx-WIK">
+                                <rect key="frame" x="11" y="309" width="289" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сайт" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKa-Mw-Yr7">
+                                <rect key="frame" x="13" y="353" width="40" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-Gy-sxr">
+                                <rect key="frame" x="0.0" y="120" width="320" height="128"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofP-Qd-VWg">
+                                <rect key="frame" x="16" y="91" width="300" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="iZ0-1s-pLQ">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iZ0-1s-pLQ" id="PtQ-b8-Ld4">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="tOE-Ta-ASl" id="AK8-6F-SFs"/>
-                            <outlet property="delegate" destination="tOE-Ta-ASl" id="LhY-5k-vsb"/>
-                        </connections>
-                    </tableView>
+                    </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ymp-t2-mII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="Address" destination="ofP-Qd-VWg" id="f1U-E5-asm"/>
+                        <outlet property="Distance" destination="fdb-VH-G37" id="NPJ-er-i6L"/>
+                        <outlet property="Phone" destination="dza-pO-Xdk" id="A9W-Xw-aRS"/>
+                        <outlet property="URL" destination="JKa-Mw-Yr7" id="9FM-Ge-ekC"/>
+                        <outlet property="mapView" destination="mX4-Gy-sxr" id="vbd-aM-N9L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-sT-kR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1627" y="110"/>
+            <point key="canvasLocation" x="1630" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hJB-ef-qV7">
