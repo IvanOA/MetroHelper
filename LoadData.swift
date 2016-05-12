@@ -89,8 +89,11 @@ class LoadData
                     PL.nameM = "Крылатское"
                     for (_,subJson):(String, JSON) in json["response"]["venues"] {
                     var tmp: Place = Place()
+                    tmp.latitude = subJson["location"]["lat"].stringValue
+                    tmp.longitude = subJson["location"]["lng"].stringValue
                     tmp.name = subJson["name"].stringValue
                     tmp.address = subJson["location"]["address"].string
+                    tmp.formattedAddress = subJson["location"]["crossStreet"].string
                     tmp.number = subJson["contact"]["formattedPhone"].string
                     tmp.distance = subJson["location"]["distance"].stringValue
                     tmp.url = subJson["url"].string

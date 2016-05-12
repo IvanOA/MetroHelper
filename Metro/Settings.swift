@@ -26,7 +26,7 @@ class Settings: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if filePl.dist == nil {
-          filePl.dist = (2000-50)/2
+            filePl.dist = (2000-50)/2
         }
         print(filePl.dist)
         SliderOutlet.value = (filePl.dist as? Float)!

@@ -10,8 +10,11 @@ import Foundation
 import RealmSwift
 
 class Place:Object{
+    dynamic var latitude: String = ""
+    dynamic var longitude: String = ""
     dynamic var name: String = ""
     dynamic var address: String? = nil
+    dynamic var formattedAddress: String? = nil
     dynamic var number: String? = nil
     dynamic var distance: String = ""
     dynamic var url: String? = nil
