@@ -85,7 +85,7 @@ class Settings: UIViewController {
         }
         
         if filePl.dist == nil {
-            filePl.dist = (2000-50)/2
+            filePl.dist = 1000
         }
         print(filePl.dist)
         SliderOutlet.value = (filePl.dist as? Float)!
