@@ -72,12 +72,15 @@ class LoadData
     func LoadFS(){
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
-        var radius = "100"
+        var radius = "1000"
         var cat: String = ""
         var cat1: String = "4d4b7105d754a06374d81259"
         var cat2: String = "4bf58dd8d48988d1f9941735"
         var cat3: String = "4bf58dd8d48988d10a951735"
         var cat4: String = "4bf58dd8d48988d116941735"
+        var cat5: String = "4bf58dd8d48988d17f941735"
+        var cat6: String = "4bf58dd8d48988d10f951735"
+        var cat7: String = "4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11a941735,4bf58dd8d48988d1d6941735"
 //        var cat2: String = ""
         if filter.filePl.dist != nil{
             radius = String(filter.filePl.dist!)
@@ -94,7 +97,16 @@ class LoadData
         if filter.filePl.categ4 != nil{
             cat += ",\(cat4)"
         }
-        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat,"limit":"50"]
+        if filter.filePl.categ5 != nil{
+            cat += ",\(cat5)"
+        }
+        if filter.filePl.categ6 != nil{
+            cat += ",\(cat6)"
+        }
+        if filter.filePl.categ7 != nil{
+            cat += ",\(cat7)"
+        }
+        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.772391,37.631671","radius":radius,"categoryId":cat,"limit":"50"]
         print("radius= \(param)")
         Alamofire.request(.GET, url,parameters: param).validate().responseJSON { response in
             switch response.result {

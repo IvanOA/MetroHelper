@@ -14,11 +14,12 @@ class Settings: UIViewController {
     @IBOutlet weak var SliderOutlet: UISlider!
     @IBOutlet weak var CurrentRange: UILabel!
     @IBOutlet weak var Sw1: UISwitch!
-
     @IBOutlet weak var Sw2: UISwitch!
     @IBOutlet weak var Sw3: UISwitch!
     @IBOutlet weak var Sw4: UISwitch!
-    
+    @IBOutlet weak var Sw5: UISwitch!
+    @IBOutlet weak var Sw6: UISwitch!
+    @IBOutlet weak var Sw7: UISwitch!
     @IBAction func Slider(sender: AnyObject) {
         CurrentRange.text = String(Int(SliderOutlet.value))
     }
@@ -53,8 +54,30 @@ class Settings: UIViewController {
         else {
             filePl.categ4 = nil
         }
+        // Кино
+        if Sw5.on == true {
+            filePl.categ5 = true
+        }
+        else {
+            filePl.categ5 = nil
+        }
+        // Драгстор
+        if Sw6.on == true {
+            filePl.categ6 = true
+        }
+        else {
+            filePl.categ6 = nil
+        }
         filePl.dist = Int(SliderOutlet.value)
         performSegueWithIdentifier("goBack", sender: nil)
+        // Клубы
+        if Sw7.on == true {
+            filePl.categ7 = true
+        }
+        else {
+            filePl.categ7 = nil
+        }
+        filePl.dist = Int(SliderOutlet.value)
       
     }
     override func viewDidLoad() {
@@ -83,7 +106,24 @@ class Settings: UIViewController {
         else {
             Sw4.on = true
         }
-        
+        if filePl.categ5 == nil{
+            Sw5.on = false
+        }
+        else {
+            Sw5.on = true
+        }
+        if filePl.categ6 == nil{
+            Sw6.on = false
+        }
+        else {
+            Sw6.on = true
+        }
+        if filePl.categ7 == nil{
+            Sw7.on = false
+        }
+        else {
+            Sw7.on = true
+        }
         if filePl.dist == nil {
             filePl.dist = 1000
         }

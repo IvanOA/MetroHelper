@@ -55,4 +55,31 @@ class FilePlist {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
+    var categ5: AnyObject?{
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey("categ5") as AnyObject?
+        }
+        set{
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "categ5")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    var categ6: AnyObject?{
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey("categ6") as AnyObject?
+        }
+        set{
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "categ6")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    var categ7: AnyObject?{
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey("categ7") as AnyObject?
+        }
+        set{
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "categ7")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
 }
