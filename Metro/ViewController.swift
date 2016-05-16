@@ -15,6 +15,9 @@ class ViewController: UITableViewController {
     var station_list: [String] = ["Крылатское"]
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var opt: FilePlist = FilePlist()
+//        opt.categ1 = true
+//        opt.categ2 = true
         // Do any additional setup after loading the view, typically from a nib.
         
         var ColourA: [String] = []

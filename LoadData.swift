@@ -67,17 +67,22 @@ class LoadData
         let last_data = self.realm.objects(LineList)
         print(last_data)
     }
-    var setDist: Settings = Settings()
+    var filter: Settings = Settings()
+    
     func LoadFS(){
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
-        var radius = "2000"
-        if setDist.filePl.dist != nil{
-            radius = String(setDist.filePl.dist!)
-            
+        var radius = "50"
+        var cat1: String = ""
+//        var cat2: String = ""
+        if filter.filePl.dist != nil{
+            radius = String(filter.filePl.dist!)
         }
-        
-        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius]
+        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat1,"limit":"50"]
+        if filter.filePl.categ1 != nil {
+            cat1 = "4bf58dd8d48988d1e0931735"
+        }
+
 //        print("radius= \(radius)")
         Alamofire.request(.GET, url,parameters: param).validate().responseJSON { response in
             switch response.result {
