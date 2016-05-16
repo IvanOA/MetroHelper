@@ -72,18 +72,17 @@ class LoadData
     func LoadFS(){
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
-        var radius = "50"
+        var radius = "100"
         var cat1: String = ""
 //        var cat2: String = ""
         if filter.filePl.dist != nil{
             radius = String(filter.filePl.dist!)
         }
-        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat1,"limit":"50"]
         if filter.filePl.categ1 != nil {
             cat1 = "4bf58dd8d48988d1e0931735"
         }
-
-//        print("radius= \(radius)")
+var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat1,"limit":"50"]
+        print("radius= \(param)")
         Alamofire.request(.GET, url,parameters: param).validate().responseJSON { response in
             switch response.result {
             case .Success:
@@ -126,5 +125,11 @@ class LoadData
         let last_data = self.realm.objects(Place).filter("name BEGINSWITH %@", place)
         print(last_data)
         return last_data
+    }
+    func PlaceClear(){
+        let last_data = self.realm.objects(Place)
+        try! self.realm.write {
+            self.realm.delete(last_data)
+        }
     }
 }

@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class ViewController: UITableViewController {
     var station_list: [String] = ["Крылатское"]
+    var refreshController = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        var opt: FilePlist = FilePlist()
@@ -25,7 +26,15 @@ class ViewController: UITableViewController {
         let onlineLW: StationList = StationList()
         let LoadSL: LoadData = LoadData()
 //        LoadSL.LoadLines()
-        LoadSL.LoadFS()
+//        LoadSL.LoadFS()
+        self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshController)
+    }
+    func RefreshList(){
+        let PlaceUpd: LoadData = LoadData()
+        PlaceUpd.PlaceClear()
+        PlaceUpd.LoadFS()
+        self.refreshController.endRefreshing()
     }
     @IBAction func goBack (segue:UIStoryboardSegue){
     }
