@@ -32,7 +32,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ncv-9D-e9A">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="weH-df-1CF">
+                        <barButtonItem key="rightBarButtonItem" title="Фильтр" id="weH-df-1CF">
                             <connections>
                                 <segue destination="Q1d-Ix-ISR" kind="show" id="1GT-wf-qa2"/>
                             </connections>
@@ -41,7 +41,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iec-6R-pX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849" y="110"/>
+            <point key="canvasLocation" x="787" y="110"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wGQ-KY-npg">
@@ -173,7 +173,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igt-EH-d6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y3e-Ed-bGY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1381" y="745"/>
+            <point key="canvasLocation" x="1206" y="788"/>
         </scene>
         <!--PlaceTVC-->
         <scene sceneID="gXp-mx-BRf">
@@ -213,6 +213,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="pZP-oS-lQw" kind="show" identifier="PlaceInfo" id="yj9-4U-YaP"/>
@@ -224,6 +225,8 @@
                             <outlet property="delegate" destination="y0C-FK-gwb" id="wIJ-gO-DRg"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byR-Fy-NkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,7 +304,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUR-hF-sPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="115"/>
+            <point key="canvasLocation" x="348" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m29-zY-xOl">
@@ -319,7 +322,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5w-6a-wai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849" y="745"/>
+            <point key="canvasLocation" x="787" y="788"/>
         </scene>
     </scenes>
 </document>

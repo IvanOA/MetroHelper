@@ -19,7 +19,7 @@ class PlaceTVC: UITableViewController{
         super.viewDidLoad()
         var ResultData: Results<PlaceList> = LoadPlace.PlaceLoadDB("Крылатское")
         for value in ResultData[0].PList{
-            if (value.address != nil)&&(value.formattedAddress != nil) {
+            if (value.address != nil)||(value.formattedAddress != nil) {
             place_list.append(value.name)
             disList.append(value.distance)
             }
