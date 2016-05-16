@@ -73,15 +73,28 @@ class LoadData
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
         var radius = "100"
-        var cat1: String = ""
+        var cat: String = ""
+        var cat1: String = "4d4b7105d754a06374d81259"
+        var cat2: String = "4bf58dd8d48988d1f9941735"
+        var cat3: String = "4bf58dd8d48988d10a951735"
+        var cat4: String = "4bf58dd8d48988d116941735"
 //        var cat2: String = ""
         if filter.filePl.dist != nil{
             radius = String(filter.filePl.dist!)
         }
-        if filter.filePl.categ1 != nil {
-            cat1 = "4bf58dd8d48988d1e0931735"
+        if filter.filePl.categ1 != nil{
+            cat = cat1
         }
-var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat1,"limit":"50"]
+        if filter.filePl.categ2 != nil{
+            cat += ",\(cat2)"
+        }
+        if filter.filePl.categ3 != nil{
+            cat += ",\(cat3)"
+        }
+        if filter.filePl.categ4 != nil{
+            cat += ",\(cat4)"
+        }
+        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.757618,37.408748","radius":radius,"categoryId":cat,"limit":"50"]
         print("radius= \(param)")
         Alamofire.request(.GET, url,parameters: param).validate().responseJSON { response in
             switch response.result {
