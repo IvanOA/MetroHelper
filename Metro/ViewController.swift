@@ -26,8 +26,7 @@ class ViewController: UITableViewController {
         var IntA: [Int] = []
         let onlineLW: StationList = StationList()
         let LoadSL: LoadData = LoadData()
-//        LoadSL.LoadLines()
-
+        LoadSL.LoadLines()
         var ResultData: Results<StationList> = LoadSL.StationLoadDB()
         for value in ResultData{
             
@@ -36,6 +35,7 @@ class ViewController: UITableViewController {
 //            LoadSL.LoadFS(value.Lat, lon: value.Lon)
         }
 //        LoadSL.LoadFS()
+        print(station_list.count)
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
         

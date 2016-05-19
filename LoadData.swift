@@ -52,6 +52,7 @@ class LoadData
                         let json = JSON(value)
                         LineInf.LineName = json["Name"].stringValue
                         LineInf.ColourCode = json["Color"].stringValue
+                        LineInf.LineId = i
                         for (_,subJson):(String, JSON) in json["StationsOnLine"]{
                             var ST = StationList()
                             //                        print(subJson["ID"].intValue)

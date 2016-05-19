@@ -14,4 +14,7 @@ class StationList: Object {
     dynamic var StationID: Int = 0
     dynamic var Lat: String = ""
     dynamic var Lon: String = ""
+    override static func primaryKey() -> String?{
+        return "StationID"
+    }
 }
