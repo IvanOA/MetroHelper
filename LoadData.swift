@@ -15,49 +15,23 @@ class LoadData
 {
     let realm = try! Realm()
     func LoadLines(){
-        var LineInf: LineList = LineList()
+//        var LineInf: LineList = LineList()
         var url: String = "https://data.cyrilmarten.com/nav.svc/lines/ru?cityid=1"
-        var IdA: [Int] = []
-        var ColorA: [String] = []
-        var Dict: [Int:String] = [:]
+//        var IdA: [Int] = []
+//        var ColorA: [String] = []
+//        var Dict: [Int:String] = [:]
     Alamofire.request(.GET, url).validate().responseJSON { response in
     switch response.result {
     case .Success:
     if let value = response.result.value {
 //    let json = JSON(value)
         for (_,json):(String, JSON) in JSON(value){
-            IdA.append(json["ID"].intValue)
-            LineInf.LineId =  json["ID"].intValue
+//            IdA.append(json["ID"].intValue)
+//            LineInf.LineId =  json["ID"].intValue
+            self.LoadStation(json["ID"].intValue)
         }
 //        LineInf = LineList(value: Dict)
-        for i in IdA {
-        var url2: String = "https://data.cyrilmarten.com/nav.svc/line/details/ru?id=" + String(i)
-        Alamofire.request(.GET, url2).validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    LineInf.LineName = json["Name"].stringValue
-                    LineInf.ColourCode = json["Color"].stringValue
-                    for (_,subJson):(String, JSON) in json["StationsOnLine"]{
-                        var ST = StationList()
-//                        print(subJson["ID"].intValue)
-                        ST.StationID = subJson["ID"].intValue
-//                        print(subJson["StationName"].stringValue)
-                        ST.StationName = subJson["StationName"].stringValue
-                        LineInf.StLst.append(ST)
-                    }
-//                    print(JSON(value))
-//                    print(LineInf)
-                    try! self.realm.write {
-                        self.realm.add(LineInf, update: true)
-                    }
-                }
-            case .Failure(let error):
-                print(error)
-            }
-        }
-        }
+        
 //    print(Dict)
     }
     case .Failure(let error):
@@ -68,8 +42,39 @@ class LoadData
         print(last_data)
     }
     var filter: Settings = Settings()
-    
-    func LoadFS(){
+    func LoadStation(i: Int) {
+        var LineInf: LineList = LineList()
+            var url2: String = "https://data.cyrilmarten.com/nav.svc/line/details/ru?id=" + String(i)
+            Alamofire.request(.GET, url2).validate().responseJSON { response in
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        LineInf.LineName = json["Name"].stringValue
+                        LineInf.ColourCode = json["Color"].stringValue
+                        for (_,subJson):(String, JSON) in json["StationsOnLine"]{
+                            var ST = StationList()
+                            //                        print(subJson["ID"].intValue)
+                            ST.StationID = subJson["ID"].intValue
+                            //                        print(subJson["StationName"].stringValue)
+                            ST.StationName = subJson["StationName"].stringValue
+                            ST.Lat = subJson["GpsCoordLatitude"].stringValue
+                            ST.Lon = subJson["GpsCoordLongitude"].stringValue
+                            LineInf.StLst.append(ST)
+                        }
+                        //                    print(JSON(value))
+                        //                    print(LineInf)
+                        try! self.realm.write {
+                            self.realm.add(LineInf, update: true)
+                        }
+                    }
+                case .Failure(let error):
+                    print(error)
+                
+            }
+        }
+    }
+    func LoadFS(lat: String, lon: String){
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
         var radius = "1000"
@@ -81,6 +86,7 @@ class LoadData
         var cat5: String = "4bf58dd8d48988d17f941735"
         var cat6: String = "4bf58dd8d48988d10f951735"
         var cat7: String = "4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11a941735,4bf58dd8d48988d1d6941735"
+
 //        var cat2: String = ""
         if filter.filePl.dist != nil{
             radius = String(filter.filePl.dist!)
@@ -106,8 +112,8 @@ class LoadData
         if filter.filePl.categ7 != nil{
             cat += ",\(cat7)"
         }
-        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"55.772391,37.631671","radius":radius,"categoryId":cat,"limit":"50"]
-        print("radius= \(param)")
+        var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"\(lat),\(lon)","radius":radius,"categoryId":cat,"limit":"50"]
+//        print("radius= \(param)")
         Alamofire.request(.GET, url,parameters: param).validate().responseJSON { response in
             switch response.result {
             case .Success:
@@ -156,5 +162,10 @@ class LoadData
         try! self.realm.write {
             self.realm.delete(last_data)
         }
+    }
+    func StationLoadDB() -> Results<StationList>{
+        let last_data = self.realm.objects(StationList)
+        print(last_data)
+        return last_data
     }
 }

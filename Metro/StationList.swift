@@ -12,4 +12,6 @@ import RealmSwift
 class StationList: Object {
     dynamic var StationName: String = ""
     dynamic var StationID: Int = 0
+    dynamic var Lat: String = ""
+    dynamic var Lon: String = ""
 }

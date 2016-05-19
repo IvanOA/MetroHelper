@@ -12,8 +12,9 @@ import RealmSwift
 import SwiftyJSON
 
 class ViewController: UITableViewController {
-    var station_list: [String] = ["Крылатское"]
+    var station_list: [String] = []
     var refreshController = UIRefreshControl()
+    var coordList: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 //        var opt: FilePlist = FilePlist()
@@ -26,14 +27,23 @@ class ViewController: UITableViewController {
         let onlineLW: StationList = StationList()
         let LoadSL: LoadData = LoadData()
 //        LoadSL.LoadLines()
+
+        var ResultData: Results<StationList> = LoadSL.StationLoadDB()
+        for value in ResultData{
+            
+                station_list.append(value.StationName)
+//                coordList.append(value.Lat + "," + value.Lon)
+//            LoadSL.LoadFS(value.Lat, lon: value.Lon)
+        }
 //        LoadSL.LoadFS()
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
+        
     }
     func RefreshList(){
         let PlaceUpd: LoadData = LoadData()
         PlaceUpd.PlaceClear()
-        PlaceUpd.LoadFS()
+//        PlaceUpd.LoadFS()
         self.refreshController.endRefreshing()
     }
     @IBAction func goBack (segue:UIStoryboardSegue){
