@@ -17,14 +17,23 @@ class PlaceTVC: UITableViewController{
     var LoadPlace: LoadData = LoadData()
     override func viewDidLoad() {
         super.viewDidLoad()
-        var ResultData: Results<PlaceList> = LoadPlace.PlaceLoadDB("Крылатское")
+        var info = LoadPlace.StationInfoLoadDB(Station)
+        print(Station, info[0].Lat,info[0].Lon)
+        LoadPlace.LoadFS(info[0].Lat,lon: info[0].Lon, sName: Station)
+        
+        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
+        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+        
+        var ResultData: Results<PlaceList> = self.LoadPlace.PlaceLoadDB(self.Station)
         for value in ResultData[0].PList{
             if (value.address != nil)||(value.formattedAddress != nil) {
-            place_list.append(value.name)
-            disList.append(value.distance)
+            self.place_list.append(value.name)
+            self.disList.append(value.distance)
             }
         }
-        
+            self.tableView.reloadData()
+        }
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return place_list.count

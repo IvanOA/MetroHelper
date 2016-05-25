@@ -75,7 +75,7 @@ class LoadData
             }
         }
     }
-    func LoadFS(lat: String, lon: String){
+    func LoadFS(lat: String, lon: String, sName: String){
         var PL = PlaceList()
         var url = "https://api.foursquare.com/v2/venues/search?"
         var radius = "1000"
@@ -122,7 +122,7 @@ class LoadData
                     print("radius= \(radius)")
                     let json = JSON(value)
                     var i = 0
-                    PL.nameM = "Крылатское"
+                    PL.nameM = sName
                     for (_,subJson):(String, JSON) in json["response"]["venues"] {
                     var tmp: Place = Place()
                     tmp.latitude = subJson["location"]["lat"].stringValue
@@ -166,6 +166,11 @@ class LoadData
     }
     func StationLoadDB() -> Results<StationList>{
         let last_data = self.realm.objects(StationList)
+        print(last_data)
+        return last_data
+    }
+    func StationInfoLoadDB(station: String) -> Results<StationList>{
+        let last_data = self.realm.objects(StationList).filter("StationName BEGINSWITH %@", station)
         print(last_data)
         return last_data
     }

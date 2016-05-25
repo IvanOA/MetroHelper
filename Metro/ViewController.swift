@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class ViewController: UITableViewController {
     var station_list: [String] = []
+    var station_list_sort: [String] = []
     var refreshController = UIRefreshControl()
     var coordList: [String] = []
     override func viewDidLoad() {
@@ -35,7 +36,9 @@ class ViewController: UITableViewController {
 //            LoadSL.LoadFS(value.Lat, lon: value.Lon)
         }
 //        LoadSL.LoadFS()
-        print(station_list.count)
+//        print(station_list.count)
+        station_list_sort = station_list.sort()
+        print(station_list_sort)
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
         
@@ -54,7 +57,8 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return station_list.count
+        return station_list_sort.count
+//        return ResultData.count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -63,7 +67,7 @@ class ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = station_list[indexPath.row]
+        cell.textLabel?.text = station_list_sort[indexPath.row]
         return cell
     }
     //переход между экранами
@@ -75,7 +79,7 @@ class ViewController: UITableViewController {
                 // создаем объект класса конечного пункта нашего перехода
                 let destvs: PlaceTVC = segue.destinationViewController as! PlaceTVC
                 // передаем необходимую информацию о городе
-                destvs.Station = station_list[indexPath.row]
+                destvs.Station = station_list_sort[indexPath.row]
             }
         }
     }
