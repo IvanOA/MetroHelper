@@ -15,7 +15,10 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
     var places: [String] = []
     var place: String = ""
     @IBOutlet weak var URL: UILabel!
-    @IBOutlet var Distance: UIView!
+//    @IBOutlet var Distance: UIView!
+    @IBOutlet weak var Name: UILabel!
+    
+    @IBOutlet weak var Distance: UILabel!
     @IBOutlet weak var Phone: UILabel!
     @IBOutlet weak var Address: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -37,11 +40,11 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
 //            Distance.text = value.distance
             if value.address != nil {
                 if value.formattedAddress != nil {
-                    Address.text = value.formattedAddress!
+                    Address.text = "Адрес: \(value.formattedAddress!)"
                     print(value.formattedAddress)
                 }
                 else {
-                    Address.text = value.address!
+                    Address.text = "Адрес: \(value.address!)"
                 }
                 
                 var placeLocation = CLLocationCoordinate2D(latitude: Double(value.latitude)!, longitude: Double(value.longitude)!)
@@ -57,24 +60,22 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
                 }
                 self.mapView.showAnnotations([placeAnnotation], animated: true )
             }
-            else {
-                Address.text = "There is no information about address"
-               
-            }
             places.append(value.name)
             places.append(value.distance)
-            
+            Name.text = value.name
+            Distance.text = "Расстояние: \(value.distance)"
             if value.number != nil {
-                Phone.text = value.number!
+                var text: String = "Телефон: \(value.number!)"
+                Phone.text = text
             }
             else {
                 Phone.text = "no Info"
             }
             if value.url != nil {
-                places.append(value.url!)
+                URL.text = "Вебсайт: \(value.url!)"
             }
             else {
-                places.append("no Info")
+                URL.text = "no Info"
             }
             //            disList.append(value.distance)
         }

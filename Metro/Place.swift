@@ -18,6 +18,8 @@ class Place:Object{
     dynamic var number: String? = nil
     dynamic var distance: String = ""
     dynamic var url: String? = nil
+    dynamic var icon1: String = ""
+    dynamic var icon2: String = ""
 }
 
 class PlaceList:Object{

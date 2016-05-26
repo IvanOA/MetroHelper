@@ -14,6 +14,7 @@ class PlaceTVC: UITableViewController{
     var place_list: [String] = []
     var Station: String = ""
     var disList: [String] = []
+    var IconList: [String] = []
     var LoadPlace: LoadData = LoadData()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,10 @@ class PlaceTVC: UITableViewController{
         
         var ResultData: Results<PlaceList> = self.LoadPlace.PlaceLoadDB(self.Station)
         for value in ResultData[0].PList{
-            if (value.address != nil)||(value.formattedAddress != nil) {
+            if (value.address != nil)||(value.formattedAddress != nil) || (value.icon1 == "") {
             self.place_list.append(value.name)
             self.disList.append(value.distance)
+            self.IconList.append(value.icon1)
             }
         }
             self.tableView.reloadData()
@@ -46,6 +48,7 @@ class PlaceTVC: UITableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.textLabel?.text = place_list[indexPath.row]
+        cell.imageView?.image = UIImage(named: IconList[indexPath.row])
         cell.detailTextLabel?.text = "Расстояние " + disList[indexPath.row] + "м."
         return cell
     }

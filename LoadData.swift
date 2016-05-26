@@ -94,6 +94,7 @@ class LoadData
         }
         if filter.filePl.categ1 != nil{
             cat = cat1
+            
         }
         if filter.filePl.categ2 != nil{
             cat += ",\(cat2)"
@@ -133,6 +134,33 @@ class LoadData
                     tmp.number = subJson["contact"]["formattedPhone"].string
                     tmp.distance = subJson["location"]["distance"].stringValue
                     tmp.url = subJson["url"].string
+                    tmp.icon2 = subJson["categories"][0]["icon"]["prefix"].stringValue
+                        var catarr: [String] = []
+                        catarr = tmp.icon2.componentsSeparatedByString("/")
+                        tmp.icon1 = ""
+                        if catarr[5] == "food" {
+                            tmp.icon1 = "rest_converted"
+                        }
+                        if catarr[5] == "shops" {
+                            tmp.icon1 = "bank_converted"
+                            if catarr[6] == "finacial_" {
+                                tmp.icon1 = "bank_converted"
+                            }
+                            if catarr[6] == "pharmacy_" {
+                                tmp.icon1 = "apteka_converted"
+                            }
+                        }
+                        if catarr[5] == "nightlife" {
+                            tmp.icon1 = "beer_converted"
+                            if catarr[6] == "nightlife_" || catarr[6] == "default_" {
+                                tmp.icon1 = "club-2"
+                            }
+                        }
+                    
+                        if catarr[5] == "arts_entertainment" {
+                            tmp.icon1 = "film-3"
+                        }
+                    
                     PL.PList.append(tmp)
 //                    print(PlaceList[i].name)
 //                    i++
