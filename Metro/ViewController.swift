@@ -26,17 +26,18 @@ class ViewController: UITableViewController {
         var ColourA: [String] = []
         var IntA: [Int] = []
         let onlineLW: StationList = StationList()
-        let LoadSL: LoadData = LoadData()
+//        let LoadSL: LoadData = LoadData()
+        let LoadSL: GetStartedViewController = GetStartedViewController()
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
         self.refreshController.beginRefreshing()
-        LoadSL.LoadLines()
         
-        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
-        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            
-        var ResultData: Results<StationList> = LoadSL.StationLoadDB()
+        
+//        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
+//        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
+//        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+        
+        var ResultData: Results<StationList> = LoadSL.LoadST.StationLoadDB()
         for value in ResultData{
             
                 self.station_list.append(value.StationName)
@@ -46,7 +47,7 @@ class ViewController: UITableViewController {
         }
             self.refreshController.endRefreshing()
             self.tableView.reloadData()
-        }
+//        }
 //        LoadSL.LoadFS()
 //        print(station_list.count)
 //        station_list_sort = station_list.sort()
