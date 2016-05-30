@@ -22,7 +22,7 @@ class GetStartedViewController: UIViewController {
         super.viewDidLoad()
 
         LoadST.LoadLines()
-        NSTimer.scheduledTimerWithTimeInterval(0.175, target: self, selector: "updateProgressView", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.1000, target: self, selector: "updateProgressView", userInfo: nil, repeats: true)
         progressView.setProgress(0, animated: false)
         button.hidden = true
         button.alpha = 0
