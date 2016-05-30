@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class ViewController: UITableViewController {
     var station_list: [String] = []
-    var station_list_sort: [String] = []
+    var station_list_id: [Int] = []
     var refreshController = UIRefreshControl()
     var coordList: [String] = []
     override func viewDidLoad() {
@@ -27,20 +27,31 @@ class ViewController: UITableViewController {
         var IntA: [Int] = []
         let onlineLW: StationList = StationList()
         let LoadSL: LoadData = LoadData()
+        self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshController)
+        self.refreshController.beginRefreshing()
         LoadSL.LoadLines()
+        
+        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
+        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
+            
         var ResultData: Results<StationList> = LoadSL.StationLoadDB()
         for value in ResultData{
             
-                station_list.append(value.StationName)
+                self.station_list.append(value.StationName)
+                self.station_list_id.append(value.LineID)
 //                coordList.append(value.Lat + "," + value.Lon)
 //            LoadSL.LoadFS(value.Lat, lon: value.Lon)
         }
+            self.refreshController.endRefreshing()
+            self.tableView.reloadData()
+        }
 //        LoadSL.LoadFS()
 //        print(station_list.count)
-        station_list_sort = station_list.sort()
-        print(station_list_sort)
-        self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
-        tableView.addSubview(refreshController)
+//        station_list_sort = station_list.sort()
+//        print(station_list_sort)
+
         
     }
     func RefreshList(){
@@ -57,7 +68,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return station_list_sort.count
+        return station_list.count
 //        return ResultData.count
     }
     
@@ -67,7 +78,8 @@ class ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = station_list_sort[indexPath.row]
+        cell.textLabel?.text = station_list[indexPath.row]
+        cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
         return cell
     }
     //переход между экранами
@@ -79,7 +91,7 @@ class ViewController: UITableViewController {
                 // создаем объект класса конечного пункта нашего перехода
                 let destvs: PlaceTVC = segue.destinationViewController as! PlaceTVC
                 // передаем необходимую информацию о городе
-                destvs.Station = station_list_sort[indexPath.row]
+                destvs.Station = station_list[indexPath.row]
             }
         }
     }

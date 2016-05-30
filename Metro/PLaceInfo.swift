@@ -25,6 +25,7 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+//        navigationController?.navigationItem.title = "dsdsd"
         
         print(place)
         var placeDB: LoadData = LoadData()

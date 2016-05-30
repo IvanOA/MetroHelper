@@ -39,7 +39,7 @@ class LoadData
         }
     }
         let last_data = self.realm.objects(LineList)
-        print(last_data)
+//        print(last_data)
     }
     var filter: Settings = Settings()
     func LoadStation(i: Int) {
@@ -61,8 +61,10 @@ class LoadData
                             ST.StationName = subJson["StationName"].stringValue
                             ST.Lat = subJson["GpsCoordLatitude"].stringValue
                             ST.Lon = subJson["GpsCoordLongitude"].stringValue
+                            ST.LineID = i
                             LineInf.StLst.append(ST)
                         }
+                        
                         //                    print(JSON(value))
                         //                    print(LineInf)
                         try! self.realm.write {
@@ -137,27 +139,40 @@ class LoadData
                     tmp.icon2 = subJson["categories"][0]["icon"]["prefix"].stringValue
                         var catarr: [String] = []
                         catarr = tmp.icon2.componentsSeparatedByString("/")
+                        print(catarr)
                         tmp.icon1 = ""
-                        if catarr[5] == "food" {
+                        var cat_arr = ""
+                        var cat_arr2 = ""
+                        var i  = 0
+                        for value in catarr{
+                            
+                            if i == 5 {
+                                cat_arr = value
+                            }else if i == 6 {
+                                cat_arr2 = value
+                            }
+                            i+=1
+                        }
+                        if cat_arr == "food" {
                             tmp.icon1 = "rest_converted"
                         }
-                        if catarr[5] == "shops" {
-                            tmp.icon1 = "bank_converted"
-                            if catarr[6] == "finacial_" {
+                        if cat_arr == "shops" {
+                            tmp.icon1 = "shop_converted"
+                            if cat_arr2 == "finacial_" {
                                 tmp.icon1 = "bank_converted"
                             }
-                            if catarr[6] == "pharmacy_" {
+                            if cat_arr2 == "pharmacy_" {
                                 tmp.icon1 = "apteka_converted"
                             }
                         }
-                        if catarr[5] == "nightlife" {
+                        if cat_arr == "nightlife" {
                             tmp.icon1 = "beer_converted"
-                            if catarr[6] == "nightlife_" || catarr[6] == "default_" {
+                            if cat_arr2 == "nightlife_" || cat_arr2 == "default_" {
                                 tmp.icon1 = "club-2"
                             }
                         }
                     
-                        if catarr[5] == "arts_entertainment" {
+                        if cat_arr == "arts_entertainment" {
                             tmp.icon1 = "film-3"
                         }
                     
@@ -193,7 +208,7 @@ class LoadData
         }
     }
     func StationLoadDB() -> Results<StationList>{
-        let last_data = self.realm.objects(StationList)
+        let last_data = self.realm.objects(StationList).sorted("StationName")
         print(last_data)
         return last_data
     }

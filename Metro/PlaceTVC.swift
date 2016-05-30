@@ -11,15 +11,24 @@ import UIKit
 import RealmSwift
 
 class PlaceTVC: UITableViewController{
+    @IBOutlet weak var loads_st: UIActivityIndicatorView!
     var place_list: [String] = []
     var Station: String = ""
     var disList: [String] = []
     var IconList: [String] = []
     var LoadPlace: LoadData = LoadData()
+//    var refreshController = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         var info = LoadPlace.StationInfoLoadDB(Station)
         print(Station, info[0].Lat,info[0].Lon)
+        loads_st.hidden = true
+        loads_st.startAnimating()
+//        self.refreshController.addTarget(self,action: "",forControlEvents: .ValueChanged)
+//        refreshController.frame.origin.x = 200
+//        refreshController.frame.origin.y = 300
+//        tableView.addSubview(refreshController)
+//        refreshController.beginRefreshing()
         LoadPlace.LoadFS(info[0].Lat,lon: info[0].Lon, sName: Station)
         
         let delay = Int64(1.5 * Double(NSEC_PER_SEC))
@@ -34,6 +43,8 @@ class PlaceTVC: UITableViewController{
             self.IconList.append(value.icon1)
             }
         }
+            self.loads_st.stopAnimating()
+//            self.refreshController.endRefreshing()
             self.tableView.reloadData()
         }
     }
