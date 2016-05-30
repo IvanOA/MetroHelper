@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Станции метро-->
+        <!--View Controller-->
         <scene sceneID="mQ8-2i-4Uv">
             <objects>
                 <tableViewController id="lwD-gc-KZ2" customClass="ViewController" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,7 @@
                             <outlet property="delegate" destination="lwD-gc-KZ2" id="7Pn-9c-c7k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Станции метро" id="ncv-9D-e9A">
+                    <navigationItem key="navigationItem" id="ncv-9D-e9A">
                         <barButtonItem key="rightBarButtonItem" title="Фильтр" id="weH-df-1CF">
                             <connections>
                                 <segue destination="Q1d-Ix-ISR" kind="show" id="1GT-wf-qa2"/>
@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="787" y="110"/>
         </scene>
-        <!--Фильтр-->
+        <!--Settings-->
         <scene sceneID="wGQ-KY-npg">
             <objects>
                 <viewController id="bSD-OU-mwK" customClass="Settings" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,6 +91,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RH8-5f-UWJ">
                                 <rect key="frame" x="251" y="240" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выбор категории" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYW-A9-EBa">
                                 <rect key="frame" x="88" y="201" width="144" height="21"/>
@@ -100,6 +101,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXj-aG-iA5">
                                 <rect key="frame" x="251" y="320" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Банки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oc-S2-dJ8">
                                 <rect key="frame" x="20" y="325" width="200" height="21"/>
@@ -109,6 +111,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRg-ff-CTm">
                                 <rect key="frame" x="251" y="360" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Бары" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8U-CU-oGh">
                                 <rect key="frame" x="20" y="365" width="200" height="21"/>
@@ -124,6 +127,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FYU-Us-lrm">
                                 <rect key="frame" x="251" y="280" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Магазы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1N-RB-jFz">
                                 <rect key="frame" x="20" y="285" width="200" height="21"/>
@@ -139,9 +143,11 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNE-Jf-9l5">
                                 <rect key="frame" x="251" y="400" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LRa-pd-7n3">
                                 <rect key="frame" x="251" y="440" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Аптеки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yg-qd-k0b">
                                 <rect key="frame" x="20" y="445" width="212" height="21"/>
@@ -151,6 +157,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MbH-YK-dL1">
                                 <rect key="frame" x="250" y="480" width="51" height="31"/>
+                                <color key="onTintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Клубы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Juz-S7-uWK">
                                 <rect key="frame" x="20" y="485" width="212" height="21"/>
@@ -161,7 +168,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Фильтр" id="RKj-eH-npe">
+                    <navigationItem key="navigationItem" id="RKj-eH-npe">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K0s-C3-e3A">
                             <connections>
                                 <segue destination="Y3e-Ed-bGY" kind="unwind" identifier="goBack" unwindAction="goBack:" id="cbe-nH-kdR"/>
@@ -207,7 +214,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="e0B-I8-Ujy" detailTextLabel="eUC-mz-AXq" style="IBUITableViewCellStyleSubtitle" id="dPf-b9-Nyz">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.94999999999999996" contentMode="top" tableViewCell="dPf-b9-Nyz" id="PVV-1y-Qzf">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="dPf-b9-Nyz" id="PVV-1y-Qzf">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -226,9 +233,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.0" green="0.52750736256544495" blue="0.086208515755479553" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="pZP-oS-lQw" kind="show" identifier="PlaceInfo" id="yj9-4U-YaP"/>
                                 </connections>
@@ -261,58 +268,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-Gy-sxr">
-                                <rect key="frame" x="0.0" y="64" width="320" height="258"/>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Телефон" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dza-pO-Xdk">
-                                <rect key="frame" x="10" y="359" width="289" height="21"/>
+                                <rect key="frame" x="10" y="412" width="289" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Расстояние" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F94-rx-WIK">
-                                <rect key="frame" x="10" y="382" width="289" height="21"/>
+                                <rect key="frame" x="10" y="435" width="289" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сайт" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKa-Mw-Yr7">
-                                <rect key="frame" x="10" y="406" width="300" height="16"/>
+                                <rect key="frame" x="10" y="459" width="300" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofP-Qd-VWg">
-                                <rect key="frame" x="10" y="330" width="300" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="xzq-DN-Dt4"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofP-Qd-VWg">
+                                <rect key="frame" x="10" y="383" width="300" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKn-bX-KI1">
-                                <rect key="frame" x="34" y="461" width="253" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-Gy-sxr">
+                                <rect key="frame" x="0.0" y="64" width="320" height="311"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mKn-bX-KI1" firstAttribute="top" secondItem="RjL-QS-JeI" secondAttribute="bottom" constant="4" id="jVG-LI-WMA"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="jVG-LI-WMA"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="Address" destination="ofP-Qd-VWg" id="f1U-E5-asm"/>
                         <outlet property="Distance" destination="F94-rx-WIK" id="j1E-ch-857"/>
-                        <outlet property="Name" destination="mKn-bX-KI1" id="1Vt-lP-D6q"/>
                         <outlet property="Phone" destination="dza-pO-Xdk" id="A9W-Xw-aRS"/>
                         <outlet property="URL" destination="JKa-Mw-Yr7" id="9FM-Ge-ekC"/>
                         <outlet property="mapView" destination="mX4-Gy-sxr" id="vbd-aM-N9L"/>
@@ -355,7 +344,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Идет загрузка..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXM-G5-nGF">
-                                <rect key="frame" x="95" y="471" width="130" height="21"/>
+                                <rect key="frame" x="100" y="471" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -412,4 +401,5 @@
             <point key="canvasLocation" x="787" y="788"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.3785365678" green="0.71009898559999995" blue="0.59175497580000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

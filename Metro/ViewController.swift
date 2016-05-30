@@ -41,6 +41,7 @@ class ViewController: UITableViewController {
         for value in ResultData{
             
                 self.station_list.append(value.StationName)
+            
                 self.station_list_id.append(value.LineID)
 //                coordList.append(value.Lat + "," + value.Lon)
 //            LoadSL.LoadFS(value.Lat, lon: value.Lon)

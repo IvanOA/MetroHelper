@@ -16,7 +16,7 @@
 		2497BC5C1CDB4A6000D9EEE3 /* PLaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497BC5B1CDB4A6000D9EEE3 /* PLaceInfo.swift */; };
 		2497BC5E1CDB5FCF00D9EEE3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497BC5D1CDB5FCF00D9EEE3 /* Settings.swift */; };
 		2497BC601CDB627E00D9EEE3 /* FilePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2497BC5F1CDB627E00D9EEE3 /* FilePlist.swift */; };
-		24FBD1911CFCB892008F8BA8 /* GerStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBD1901CFCB892008F8BA8 /* GerStartedViewController.swift */; };
+		24FBD1911CFCB892008F8BA8 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBD1901CFCB892008F8BA8 /* GetStartedViewController.swift */; };
 		DD89CC67E9EADA453201DB4B /* Pods_Metro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98F1135F7B8886CE4243637 /* Pods_Metro.framework */; };
 		F1DBF40F1CC391E900EE86B4 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBF40E1CC391E900EE86B4 /* LoadData.swift */; };
 		F1DBF4111CC672CC00EE86B4 /* LineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBF4101CC672CC00EE86B4 /* LineList.swift */; };
@@ -37,7 +37,7 @@
 		2497BC5B1CDB4A6000D9EEE3 /* PLaceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLaceInfo.swift; sourceTree = "<group>"; };
 		2497BC5D1CDB5FCF00D9EEE3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2497BC5F1CDB627E00D9EEE3 /* FilePlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePlist.swift; sourceTree = "<group>"; };
-		24FBD1901CFCB892008F8BA8 /* GerStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GerStartedViewController.swift; sourceTree = "<group>"; };
+		24FBD1901CFCB892008F8BA8 /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		2D43F4FCE0BE585BF268E76D /* Pods-Metro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metro/Pods-Metro.debug.xcconfig"; sourceTree = "<group>"; };
 		6F7742E6A57E81F3DDC5A6E4 /* Pods-Metro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metro.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metro/Pods-Metro.release.xcconfig"; sourceTree = "<group>"; };
 		C98F1135F7B8886CE4243637 /* Pods_Metro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +96,7 @@
 				2497BC5B1CDB4A6000D9EEE3 /* PLaceInfo.swift */,
 				2497BC5D1CDB5FCF00D9EEE3 /* Settings.swift */,
 				2497BC5F1CDB627E00D9EEE3 /* FilePlist.swift */,
-				24FBD1901CFCB892008F8BA8 /* GerStartedViewController.swift */,
+				24FBD1901CFCB892008F8BA8 /* GetStartedViewController.swift */,
 			);
 			path = Metro;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 				TargetAttributes = {
 					1F8DF77A1CBFD2CB00F6EC56 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 449M4X7EBD;
+						DevelopmentTeam = HPGLGM5TWM;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -249,7 +249,7 @@
 			files = (
 				F1DBF4171CCE0EC600EE86B4 /* PlaceTVC.swift in Sources */,
 				1F8DF7911CBFD39200F6EC56 /* StationList.swift in Sources */,
-				24FBD1911CFCB892008F8BA8 /* GerStartedViewController.swift in Sources */,
+				24FBD1911CFCB892008F8BA8 /* GetStartedViewController.swift in Sources */,
 				2497BC601CDB627E00D9EEE3 /* FilePlist.swift in Sources */,
 				F1DBF4111CC672CC00EE86B4 /* LineList.swift in Sources */,
 				2497BC5C1CDB4A6000D9EEE3 /* PLaceInfo.swift in Sources */,
@@ -374,9 +374,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Metro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.Metro;
+				PRODUCT_BUNDLE_IDENTIFIER = "----Metro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -391,9 +391,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Metro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.Metro;
+				PRODUCT_BUNDLE_IDENTIFIER = "----Metro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -26,7 +26,8 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         mapView.delegate = self
 //        navigationController?.navigationItem.title = "dsdsd"
-        
+        var title: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 32))
+
         print(place)
         var placeDB: LoadData = LoadData()
         let info = placeDB.PlaceLoadInfoDB(place)
@@ -63,7 +64,11 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
             }
             places.append(value.name)
             places.append(value.distance)
-            Name.text = value.name
+            title.setTitle(value.name, forState: UIControlState.Normal)
+            title.titleLabel?.font = UIFont(name: "PlaceInfo", size: 28.0)
+            title.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            self.navigationItem.titleView = title
+//            Name.text = value.name
             Distance.text = "Расстояние: \(value.distance)"
             if value.number != nil {
                 Phone.text = "Телефон: \(value.number!)"

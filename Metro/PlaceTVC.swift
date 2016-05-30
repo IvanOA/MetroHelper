@@ -20,6 +20,7 @@ class PlaceTVC: UITableViewController{
 //    var refreshController = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
+        var title: UIButton = UIButton(frame: CGRectMake(0, 0, 100, 32))
         var info = LoadPlace.StationInfoLoadDB(Station)
         print(Station, info[0].Lat,info[0].Lon)
         loads_st.hidden = true
@@ -41,6 +42,10 @@ class PlaceTVC: UITableViewController{
             self.place_list.append(value.name)
             self.disList.append(value.distance)
             self.IconList.append(value.icon1)
+                title.setTitle(self.Station, forState: UIControlState.Normal)
+                title.titleLabel?.font = UIFont(name: "PlaceTVC", size: 30.0)
+                title.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                self.navigationItem.titleView = title
             }
         }
             self.loads_st.stopAnimating()
