@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Станции метро-->
         <scene sceneID="mQ8-2i-4Uv">
             <objects>
                 <tableViewController id="lwD-gc-KZ2" customClass="ViewController" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                             <outlet property="delegate" destination="lwD-gc-KZ2" id="7Pn-9c-c7k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ncv-9D-e9A">
+                    <navigationItem key="navigationItem" title="Станции метро" id="ncv-9D-e9A">
                         <barButtonItem key="rightBarButtonItem" title="Фильтр" id="weH-df-1CF">
                             <connections>
                                 <segue destination="Q1d-Ix-ISR" kind="show" id="1GT-wf-qa2"/>
@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="787" y="110"/>
         </scene>
-        <!--Settings-->
+        <!--Фильтр-->
         <scene sceneID="wGQ-KY-npg">
             <objects>
                 <viewController id="bSD-OU-mwK" customClass="Settings" customModule="Metro" customModuleProvider="target" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RKj-eH-npe">
+                    <navigationItem key="navigationItem" title="Фильтр" id="RKj-eH-npe">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K0s-C3-e3A">
                             <connections>
                                 <segue destination="Y3e-Ed-bGY" kind="unwind" identifier="goBack" unwindAction="goBack:" id="cbe-nH-kdR"/>
@@ -227,8 +227,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.52750736256544495" blue="0.086208515755479553" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="pZP-oS-lQw" kind="show" identifier="PlaceInfo" id="yj9-4U-YaP"/>
                                 </connections>
@@ -258,41 +259,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-Gy-sxr">
+                                <rect key="frame" x="0.0" y="64" width="320" height="258"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKn-bX-KI1">
+                                <rect key="frame" x="34" y="15" width="253" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Телефон" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dza-pO-Xdk">
-                                <rect key="frame" x="11" y="289" width="289" height="21"/>
+                                <rect key="frame" x="10" y="359" width="289" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Расстояние" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F94-rx-WIK">
-                                <rect key="frame" x="11" y="312" width="289" height="21"/>
+                                <rect key="frame" x="10" y="382" width="289" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Сайт" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKa-Mw-Yr7">
-                                <rect key="frame" x="11" y="336" width="300" height="16"/>
+                                <rect key="frame" x="10" y="406" width="300" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mX4-Gy-sxr">
-                                <rect key="frame" x="0.0" y="120" width="320" height="128"/>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Адрес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofP-Qd-VWg">
-                                <rect key="frame" x="11" y="260" width="300" height="21"/>
+                                <rect key="frame" x="10" y="330" width="300" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKn-bX-KI1">
-                                <rect key="frame" x="34" y="68" width="253" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mKn-bX-KI1" firstAttribute="top" secondItem="RjL-QS-JeI" secondAttribute="bottom" constant="4" id="jVG-LI-WMA"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -306,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg1-sT-kR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1625" y="24"/>
+            <point key="canvasLocation" x="1633" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hJB-ef-qV7">

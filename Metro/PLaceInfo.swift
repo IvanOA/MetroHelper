@@ -65,17 +65,16 @@ class PlaceInfo: UIViewController, MKMapViewDelegate{
             Name.text = value.name
             Distance.text = "Расстояние: \(value.distance)"
             if value.number != nil {
-                var text: String = "Телефон: \(value.number!)"
-                Phone.text = text
+                Phone.text = "Телефон: \(value.number!)"
             }
             else {
-                Phone.text = "no Info"
+                Phone.text = "Телефон: информация отсутствует"
             }
             if value.url != nil {
                 URL.text = "Вебсайт: \(value.url!)"
             }
             else {
-                URL.text = "no Info"
+                URL.text = "Вебсайт: информация отсутствует"
             }
             //            disList.append(value.distance)
         }
