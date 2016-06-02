@@ -14,7 +14,8 @@ import SwiftyJSON
 class ViewController: UITableViewController, UISearchResultsUpdating {
     var station_list: [String] = []
     var filteredStation_list = [String]()
-    var resultSearchController = UISearchController()
+    var resultsController = UITableViewController()
+    var searchController: UISearchController!
     var station_list_id: [Int] = []
     var refreshController = UIRefreshControl()
     var coordList: [String] = []
@@ -34,19 +35,16 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
         tableView.addSubview(refreshController)
         self.refreshController.beginRefreshing()
         //Поиск
-//        self.resultsController.tableView.dataSource = self
-//        self.resultsController.tableView.delegate = self
-//        self.searchController = UISearchController(searchResultsController: self.resultsController)
-//        self.tableView.tableHeaderView = self.searchController.searchBar
-//        self.searchController.searchResultsUpdater = self
-        self.resultSearchController = UISearchController(searchResultsController: nil)
-        self.resultSearchController.searchResultsUpdater = self
-        self.resultSearchController.dimsBackgroundDuringPresentation = false
-        self.resultSearchController.searchBar.sizeToFit()
-        self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        self.resultsController.tableView.dataSource = self
+        self.resultsController.tableView.delegate = self
+        self.searchController = UISearchController(searchResultsController: self.resultsController)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
         //Поиск
         
-//        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
+//        let delay = Int64(1.5 * Double(NSEC_PER_SEC))>
 //        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
 //        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
         
@@ -82,40 +80,25 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.resultSearchController.active
-        {
+        if tableView == self.tableView{
+            return self.station_list.count
+        } else{
             return self.filteredStation_list.count
         }
-        else
-        {
-            return self.station_list.count
-        }
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        if tableView == self.tableView {
-//            return self.station_list.count
-//        } else {
-//            return self.filteredStation_list.count
-//        }
-        return 1
     }
     
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-        if self.resultSearchController.active
-        {
+        let cell = UITableViewCell()
+        if tableView == self.tableView{
+        cell.textLabel?.text = station_list[indexPath.row]
+        cell.imageView?.image = UIImage(named:String(station_list_id[indexPath.row]))
+        } else {
             cell.textLabel?.text = filteredStation_list[indexPath.row]
-            cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
-        }
-        else
-        {
-            cell.textLabel?.text = station_list[indexPath.row]
-            cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
+            cell.imageView?.image = UIImage(named:String(station_list_id[indexPath.row]))
         }
         return cell
     }
@@ -133,13 +116,14 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
         }
     }
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        self.filteredStation_list.removeAll(keepCapacity: false)
-        
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (self.station_list as NSArray).filteredArrayUsingPredicate(searchPredicate)
-        self.filteredStation_list = array as! [String]
-        self.tableView.reloadData()
+        self .filteredStation_list = self.station_list.filter { (station:String) -> Bool in
+            if station.lowercaseString.containsString(self.searchController.searchBar.text!.lowercaseString){
+                return true
+            } else{
+                return false
+            }
+        }
+        self.resultsController.tableView.reloadData()
     }
-
 }
 
