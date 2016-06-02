@@ -11,8 +11,10 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UISearchResultsUpdating {
     var station_list: [String] = []
+    var filteredStation_list = [String]()
+    var resultSearchController = UISearchController()
     var station_list_id: [Int] = []
     var refreshController = UIRefreshControl()
     var coordList: [String] = []
@@ -31,7 +33,18 @@ class ViewController: UITableViewController {
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
         self.refreshController.beginRefreshing()
-        
+        //Поиск
+//        self.resultsController.tableView.dataSource = self
+//        self.resultsController.tableView.delegate = self
+//        self.searchController = UISearchController(searchResultsController: self.resultsController)
+//        self.tableView.tableHeaderView = self.searchController.searchBar
+//        self.searchController.searchResultsUpdater = self
+        self.resultSearchController = UISearchController(searchResultsController: nil)
+        self.resultSearchController.searchResultsUpdater = self
+        self.resultSearchController.dimsBackgroundDuringPresentation = false
+        self.resultSearchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = self.resultSearchController.searchBar
+        //Поиск
         
 //        let delay = Int64(1.5 * Double(NSEC_PER_SEC))
 //        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
@@ -56,6 +69,7 @@ class ViewController: UITableViewController {
 
         
     }
+    
     func RefreshList(){
         let PlaceUpd: LoadData = LoadData()
         PlaceUpd.PlaceClear()
@@ -70,18 +84,39 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return station_list.count
-//        return ResultData.count
+        if self.resultSearchController.active
+        {
+            return self.filteredStation_list.count
+        }
+        else
+        {
+            return self.station_list.count
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        if tableView == self.tableView {
+//            return self.station_list.count
+//        } else {
+//            return self.filteredStation_list.count
+//        }
         return 1
     }
     
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = station_list[indexPath.row]
-        cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        if self.resultSearchController.active
+        {
+            cell.textLabel?.text = filteredStation_list[indexPath.row]
+            cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
+        }
+        else
+        {
+            cell.textLabel?.text = station_list[indexPath.row]
+            cell.imageView?.image = UIImage(named: String(station_list_id[indexPath.row]))
+        }
         return cell
     }
     //переход между экранами
@@ -96,6 +131,14 @@ class ViewController: UITableViewController {
                 destvs.Station = station_list[indexPath.row]
             }
         }
+    }
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        self.filteredStation_list.removeAll(keepCapacity: false)
+        
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (self.station_list as NSArray).filteredArrayUsingPredicate(searchPredicate)
+        self.filteredStation_list = array as! [String]
+        self.tableView.reloadData()
     }
 
 }
