@@ -11,7 +11,7 @@ import Alamofire
 import RealmSwift
 import SwiftyJSON
 
-class ViewController: UITableViewController, UISearchResultsUpdating {
+class ViewController: UITableViewController {
     var station_list: [String] = []
     var filteredStation_list = [String]()
     var resultsController = UITableViewController()
@@ -34,15 +34,7 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
         self.refreshController.addTarget(self,action: "RefreshList",forControlEvents: .ValueChanged)
         tableView.addSubview(refreshController)
         self.refreshController.beginRefreshing()
-        //Поиск
-        self.resultsController.tableView.dataSource = self
-        self.resultsController.tableView.delegate = self
-        self.searchController = UISearchController(searchResultsController: self.resultsController)
-        self.tableView.tableHeaderView = self.searchController.searchBar
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        //Поиск
+        
         
 //        let delay = Int64(1.5 * Double(NSEC_PER_SEC))>
 //        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, delay)
@@ -82,24 +74,15 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.tableView{
             return self.station_list.count
-        } else{
-            return self.filteredStation_list.count
-        }
     }
     
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        if tableView == self.tableView{
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = station_list[indexPath.row]
         cell.imageView?.image = UIImage(named:String(station_list_id[indexPath.row]))
-        } else {
-            cell.textLabel?.text = filteredStation_list[indexPath.row]
-            cell.imageView?.image = UIImage(named:String(station_list_id[indexPath.row]))
-        }
         return cell
     }
     //переход между экранами
@@ -115,15 +98,6 @@ class ViewController: UITableViewController, UISearchResultsUpdating {
             }
         }
     }
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        self .filteredStation_list = self.station_list.filter { (station:String) -> Bool in
-            if station.lowercaseString.containsString(self.searchController.searchBar.text!.lowercaseString){
-                return true
-            } else{
-                return false
-            }
-        }
-        self.resultsController.tableView.reloadData()
-    }
+    
 }
 
