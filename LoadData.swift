@@ -88,7 +88,6 @@ class LoadData
         var cat4: String = "4bf58dd8d48988d116941735"
         var cat5: String = "4bf58dd8d48988d17f941735"
         var cat6: String = "4bf58dd8d48988d10f951735"
-        var cat7: String = "4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11a941735,4bf58dd8d48988d1d6941735"
 
 //        var cat2: String = ""
         if filter.filePl.dist != nil{
@@ -112,9 +111,6 @@ class LoadData
         }
         if filter.filePl.categ6 != nil{
             cat += ",\(cat6)"
-        }
-        if filter.filePl.categ7 != nil{
-            cat += ",\(cat7)"
         }
         var param = ["client_id":"5RLDDBXJ2ETRSKAIVEGOKJ553YEI5K2GFZRAXLJ3LVW4TO3X","client_secret":"3R5FQAZKI4D40TGWXDAXR4C3R1RJCBSAEHZQ50DKZY0GPU5K","v":"20130815","ll":"\(lat),\(lon)","radius":radius,"categoryId":cat,"limit":"50"]
 //        print("radius= \(param)")
@@ -151,29 +147,27 @@ class LoadData
                             }else if i == 6 {
                                 cat_arr2 = value
                             }
+                            tmp.icon1 = "default"
                             i+=1
                         }
                         if cat_arr == "food" {
-                            tmp.icon1 = "rest_converted"
+                            tmp.icon1 = "food"
                         }
                         if cat_arr == "shops" {
-                            tmp.icon1 = "shop_converted"
-                            if cat_arr2 == "finacial_" {
-                                tmp.icon1 = "bank_converted"
+                            tmp.icon1 = "shop"
+                            if cat_arr2 == "financial_" {
+                                tmp.icon1 = "bank"
                             }
                             if cat_arr2 == "pharmacy_" {
-                                tmp.icon1 = "apteka_converted"
+                                tmp.icon1 = "medicine"
                             }
                         }
                         if cat_arr == "nightlife" {
-                            tmp.icon1 = "beer_converted"
-                            if cat_arr2 == "nightlife_" || cat_arr2 == "default_" {
-                                tmp.icon1 = "club-2"
-                            }
+                            tmp.icon1 = "beer"
                         }
                     
                         if cat_arr == "arts_entertainment" {
-                            tmp.icon1 = "film-3"
+                            tmp.icon1 = "film"
                         }
                     
                     PL.PList.append(tmp)

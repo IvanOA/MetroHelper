@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "beer.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "beer_converted.png",
       "scale" : "2x"
     },
     {

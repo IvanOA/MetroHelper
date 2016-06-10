@@ -19,7 +19,6 @@ class Settings: UIViewController {
     @IBOutlet weak var Sw4: UISwitch!
     @IBOutlet weak var Sw5: UISwitch!
     @IBOutlet weak var Sw6: UISwitch!
-    @IBOutlet weak var Sw7: UISwitch!
     @IBAction func Slider(sender: AnyObject) {
         CurrentRange.text = String(Int(SliderOutlet.value))
     }
@@ -70,13 +69,6 @@ class Settings: UIViewController {
         }
         filePl.dist = Int(SliderOutlet.value)
         performSegueWithIdentifier("goBack", sender: nil)
-        // Клубы
-        if Sw7.on == true {
-            filePl.categ7 = true
-        }
-        else {
-            filePl.categ7 = nil
-        }
         filePl.dist = Int(SliderOutlet.value)
       
     }
@@ -117,12 +109,6 @@ class Settings: UIViewController {
         }
         else {
             Sw6.on = true
-        }
-        if filePl.categ7 == nil{
-            Sw7.on = false
-        }
-        else {
-            Sw7.on = true
         }
         if filePl.dist == nil {
             filePl.dist = 1000
